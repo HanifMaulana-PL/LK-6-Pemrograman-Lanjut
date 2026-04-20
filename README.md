@@ -19,5 +19,10 @@ Class ini adalah class untuk menginput  data dan memberikan output dari data yan
 Class Pegawai.java :
 Class ini adalah clas untuk menyimpan data pegawai seperti NIP, nama, tanggal lahir, dan password. Class ini juga memiliki sistem login dan logout melalui class Auth.java
 
-Class Peminjaman.java
+Class Peminjaman.java :
+Untuk class Peminjaman, class ini berfungsi untuk mengelola peminjaman buku pada sistem perpustakaan, mencatat data peminjaman buku, data pengembalian buku, juga data transaksi, serta mengecek dan mencatat keterlambatan pemngembalian buku sesuai tanggal maksimal peminjaman.
+
 Class Laporan.java
+Class ini digunakan untuk menampilkan laporan tentang data peminjaman buku, menampilkan data buku yang belum dikembalikan, yang terlambat mengembalikan, dan seluruh riwayat peminjaman buku.
+
+Class Main.java :
