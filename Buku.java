@@ -1,5 +1,3 @@
-package PEMLAN.LK6;
-
 import java.util.*;
 
 public class Buku {
