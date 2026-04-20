@@ -1,5 +1,3 @@
-package Polymorphism;
-
 import java.util.*;
 
 public class JenisBuku {
