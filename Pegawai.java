@@ -1,5 +1,3 @@
-package LK6;
-
 import java.util.Date;
 
 public class Pegawai {
