@@ -30,8 +30,9 @@ public class Siswa {
     }
 
     public static List<Siswa> lihat() {
+        FileHandler file = new FileHandler(FILE);
         List<Siswa> list = new ArrayList<>();
-        for (String b : FileHandler.baca(FILE)) {
+        for (String b : file.baca()) {
             String[] p = b.split("\\|");
             if (p.length == 3)
                 list.add(new Siswa(p[0], p[1], p[2]));
@@ -40,12 +41,14 @@ public class Siswa {
     }
 
     private static void simpanSemua(List<Siswa> list) {
-        FileHandler.hapusData(FILE);
+        FileHandler file = new FileHandler(FILE);
+        file.hapusData();
         for (Siswa s : list)
-            FileHandler.tulis(FILE, s.NIS + "|" + s.nama + "|" + s.alamat);
+            file.tulis(s.NIS + "|" + s.nama + "|" + s.alamat);
     }
 
     public static void tambah() {
+        FileHandler file = new FileHandler(FILE);
         System.out.print("NIS    : ");
         String nis = sc.nextLine();
         for (Siswa s : lihat()) {
@@ -58,7 +61,7 @@ public class Siswa {
         String nama = sc.nextLine();
         System.out.print("Alamat : ");
         String alamat = sc.nextLine();
-        FileHandler.tulis(FILE, nis + "|" + nama + "|" + alamat);
+        file.tulis(nis + "|" + nama + "|" + alamat);
         System.out.println("Siswa ditambahkan.");
     }
 
