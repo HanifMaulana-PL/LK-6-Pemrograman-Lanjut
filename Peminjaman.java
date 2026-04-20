@@ -1,5 +1,3 @@
-package LK06_Pemlan;
-
 import java.util.*;
 
 public class Peminjaman {
