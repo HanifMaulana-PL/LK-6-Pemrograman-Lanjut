@@ -5,7 +5,6 @@ public class Buku {
     private String judul;
     private JenisBuku jenisBuku;
     private int stok;
-
     private static final String FILE = "buku.txt";
     static Scanner sc = new Scanner(System.in);
 
@@ -37,7 +36,8 @@ public class Buku {
 
     public static List<Buku> lihat() {
         List<Buku> list = new ArrayList<>();
-        for (String b : FileHandler.baca(FILE)) {
+        FileHandler file = new FileHandler(FILE);
+        for (String b : file.baca()) {
             String[] p = b.split("\\|");
             if (p.length == 4) {
                 JenisBuku jenis = JenisBuku.cari(p[2]);
@@ -55,12 +55,14 @@ public class Buku {
     }
 
     public static void simpanSemua(List<Buku> list) {
-        FileHandler.hapusData(FILE);
+        FileHandler file = new FileHandler(FILE);
+        file.hapusData();
         for (Buku b : list)
-            FileHandler.tulis(FILE, b.kodeBuku + "|" + b.judul + "|" + b.jenisBuku.getKodeJenis() + "|" + b.stok);
+            file.tulis(b.kodeBuku + "|" + b.judul + "|" + b.jenisBuku.getKodeJenis() + "|" + b.stok);
     }
 
     public static void tambah() {
+        FileHandler file = new FileHandler(FILE);
         System.out.print("Kode Buku : ");
         String kode = sc.nextLine();
         for (Buku b : lihat()) {
@@ -89,7 +91,7 @@ public class Buku {
             return;
         }
 
-        FileHandler.tulis(FILE, kode + "|" + judul + "|" + kodeJenis + "|" + stok);
+        file.tulis(kode + "|" + judul + "|" + kodeJenis + "|" + stok);
         System.out.println("Buku ditambahkan.");
     }
 
