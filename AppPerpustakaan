@@ -1,0 +1,230 @@
+//(!) UNTUK LOGIN
+//username: default password: normal || username: admin password: abnormal
+
+import java.util.Date;
+import java.util.Scanner;
+
+public class AppPerpustakaan {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //VARIABEL UNTUK SWITCH CASE
+        int pilihPegawai = 0;
+
+        //INSTANSIASI OBJEK PEGAWAI
+        Pegawai Dono = new Pegawai("001", "Wahjoe Sardono", new Date(50, 8, 30), "normal");
+        Pegawai Kasino = new Pegawai("002", "Kasino Hadiwibowo", new Date(50, 8, 15), "normal");
+        Pegawai Indro = new Pegawai("003", "Indrodjojo Kusumonegoro", new Date(58, 4, 8), "normal");
+        Pegawai INVALID = new Pegawai("", "", new Date(0, 0, 0), "");
+        //variabel yang menampung pilihan pegawai [Dono sebagai nilai default (nanti akan terganti jadi objek INVALID)]
+        Pegawai pilihan = Dono;
+
+        //PILIH PEGAWAI
+        do {
+            System.out.println("------Sistem Sederhana Perpustakaan SMP------");
+            System.out.println("Siapa Anda?");
+            System.out.println("1. Dono");
+            System.out.println("2. Kasino");
+            System.out.println("3. Indro");
+            System.out.println("0. keluar");
+            System.out.println("masukkan pilihan: ");
+            pilihPegawai = in.nextInt();
+
+            // (!) KETERANGAN: SINTAKS '->' PADA CASE TIDAK PERLU BREAK LAGI. 
+            switch (pilihPegawai) {
+                case 1 -> {
+                    pilihan = Dono;
+                }
+                case 2 -> {
+                    pilihan = Kasino;
+                }
+                case 3 -> {
+                    pilihan = Indro;
+                }
+                case 0 -> {
+
+                }
+                default -> {
+                    pilihan = INVALID;
+                    pilihPegawai = 0;
+                }
+            }
+            
+            if (pilihPegawai != 0) {
+                int pilih = 0;
+                //PILIH TOPIK
+                do {
+                    System.out.println("------Sistem Sederhana Perpustakaan SMP------");
+
+                    String username;
+                    String password;
+                    //input username & password
+                    System.out.println("Username: ");
+                    username = in.next();
+                    System.out.println("Password: ");
+                    password = in.next();
+                    //proses autentikasi
+                    if (pilihan.login(username, password)) {
+                        int pilihTopik = 100;
+                        do {
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("Selamat Datang,");
+                            System.out.println(pilihan);
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("Berikut topik yang tersedia");
+                            System.out.println("------Topik------");
+                            System.out.println("1. Buku");
+                            System.out.println("2. Jenis Buku");
+                            System.out.println("3. Siswa");
+                            System.out.println("4. Peminjaman");
+                            System.out.println("0. Logout");
+                            System.out.printf("Masukkan Pilihan: ");
+                            pilihTopik = in.nextInt();
+                            System.out.println("");
+                            switch (pilihTopik) {
+                                //TOPIK BUKU
+                                case 1 -> {
+                                    int pilihTopikBuku;
+                                    do {
+                                        System.out.println("------Daftar Layanan Topik Buku------");
+                                        System.out.println("1. Tampil");
+                                        System.out.println("2. Tambah");
+                                        System.out.println("3. Hapus");
+                                        System.out.println("4. Edit");
+                                        System.out.println("0. Kembali ke daftar topik");
+                                        System.out.printf("Masukkan Pilihan: ");
+                                        pilihTopikBuku = in.nextInt();
+                                        System.out.println("");
+                                        switch (pilihTopikBuku) {
+                                            case 1 -> {
+                                                Buku.tampil();
+                                            }
+                                            case 2 -> {
+                                                Buku.tambah();
+                                            }
+                                            case 3 -> {
+                                                Buku.hapus();
+                                            }
+                                            case 4 -> {
+                                                Buku.edit();
+                                            }
+                                            case 0 -> {
+                                                pilihan.logout();
+                                            }
+                                            default ->
+                                                System.out.println("invalid");
+                                        }
+                                        //AKHIR SWITCH CASE TOPIK BUKU
+                                    } while (pilihTopikBuku != 0);
+                                }
+                                //TOPIK JENIS BUKU
+                                case 2 -> {
+                                    int pilihTopikJenisBuku;
+                                    do {
+                                        System.out.println("------Daftar Layanan Topik Jenis Buku------");
+                                        System.out.println("1. Tampil");
+                                        System.out.println("2. Tambah");
+                                        System.out.println("3. Edit");
+                                        System.out.println("0. Kembali ke daftar topik");
+                                        System.out.printf("Masukkan Pilihan: ");
+                                        pilihTopikJenisBuku = in.nextInt();
+                                        System.out.println("");
+                                        switch (pilihTopikJenisBuku) {
+                                            case 1 -> {
+                                                JenisBuku.tampil();
+                                            }
+                                            case 2 -> {
+                                                JenisBuku.tambah();
+                                            }
+                                            case 3 -> {
+                                                JenisBuku.edit();
+                                            }
+                                            case 0 -> {
+                                                pilihan.logout();
+                                            }
+                                            default ->
+                                                System.out.println("invalid");
+                                        }
+                                        //AKHIR SWITCH CASE TOPIK JENIS BUKU
+                                    } while (pilihTopikJenisBuku != 0);
+                                }
+                                //TOPIK SISWA
+                                case 3 -> {
+                                    int pilihTopikSiswa;
+                                    do {
+                                        System.out.println("------Daftar Layanan Topik Siswa------");
+                                        System.out.println("1. Tampil");
+                                        System.out.println("2. Tambah");
+                                        System.out.println("3. Hapus");
+                                        System.out.println("4. Edit");
+                                        System.out.println("0. Kembali ke daftar topik");
+                                        System.out.printf("Masukkan Pilihan: ");
+                                        pilihTopikSiswa = in.nextInt();
+                                        System.out.println("");
+                                        switch (pilihTopikSiswa) {
+                                            case 1 -> {
+                                                Siswa.tampil();
+                                            }
+                                            case 2 -> {
+                                                Siswa.tambah();
+                                            }
+                                            case 3 -> {
+                                                Siswa.hapus();
+                                            }
+                                            case 4 -> {
+                                                Siswa.edit();
+                                            }
+                                            case 0 -> {
+                                                pilihan.logout();
+                                            }
+                                            default ->
+                                                System.out.println("invalid");
+                                        }
+                                        //AKHIR SWITCH CASE TOPIK SISWA
+                                    } while (pilihTopikSiswa != 0);
+                                }
+                                //TOPIK PEMINJAMAN
+                                case 4 -> {
+                                    int pilihTopikPeminjaman;
+                                    do {
+                                        System.out.println("------Daftar Layanan Topik Peminjaman------");
+                                        System.out.println("1. Tambah");
+                                        System.out.println("2. Kembalikan");
+                                        System.out.println("0. Kembali ke daftar topik");
+                                        System.out.printf("Masukkan Pilihan: ");
+                                        pilihTopikPeminjaman = in.nextInt();
+                                        System.out.println("");
+                                        switch (pilihTopikPeminjaman) {
+                                            case 1 -> {
+                                                Peminjaman.tambah();
+                                            }
+                                            case 2 -> {
+                                                Peminjaman.kembalikan();
+                                            }
+                                            case 0 -> {
+                                                pilihan.logout();
+                                            }
+                                            default ->
+                                                System.out.println("invalid");
+                                        }
+                                        //AKHIR SWITCH CASE TOPIK PEMINJAMAN
+                                    } while (pilihTopikPeminjaman != 0);
+                                }
+                                case 0 -> {
+                                    pilihan.logout();
+                                }
+                                default ->
+                                    System.out.println("invalid");
+                            }
+                            //AKHIR SWITCH CASE TOPIK
+                        } while (pilihTopik != 0);
+                    }
+                    //AKHIR SWITCH CASE LOG IN
+                } while (pilih != 0);
+                
+            //AKHIR IF JIKA PILIH PEGAWAI != 0
+            }
+            //AKHIR SWITCH CASE PEGAWAI
+        } while (pilihPegawai != 0);
+    }
+}
