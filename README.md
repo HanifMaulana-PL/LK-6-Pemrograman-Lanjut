@@ -10,8 +10,12 @@ Class ini untuk merepresentasikan jenis buku dalam sistem perpustakaan, class in
 Class Siswa.java
 Class siswa digunakan untuk menyimpan data siswa dalam sistem perpustakaan, menyimpan data nama, NIM, alamat, dan juga memiliki fungsi untuk mengedit file nya 
 
-Class Auth.java
-Class FileHeader.java
-Class Pegawai.java
+Class Auth.java :
+Class ini berfungsi untuk menangani proses autentikasi dari siswa atau pengguna dalam sistem perpustakaan. Class ini juga memferivikasi nama pengguna dan password nya, juga memiliki fitur login dan logout untuk pengguna.
+
+Class FileHeader.java :
+
+Class Pegawai.java :
+
 Class Peminjaman.java
 Class Laporan.java
