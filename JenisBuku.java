@@ -1,3 +1,5 @@
+package Polymorphism;
+
 import java.util.*;
 
 public class JenisBuku {
@@ -26,7 +28,8 @@ public class JenisBuku {
     // Baca semua data dari file
     public static List<JenisBuku> lihat() {
         List<JenisBuku> list = new ArrayList<>();
-        for (String b : FileHandler.baca(FILE)) {
+        FileHandler file = new FileHandler(FILE);
+        for (String b : file.baca()) {
             String[] p = b.split("\\|");
             if (p.length == 2)
                 list.add(new JenisBuku(p[0], p[1]));
@@ -36,12 +39,14 @@ public class JenisBuku {
 
     // Simpan ulang semua data ke file
     private static void simpanSemua(List<JenisBuku> list) {
-        FileHandler.hapusData(FILE);
+        FileHandler file = new FileHandler(FILE);
+        file.hapusData();
         for (JenisBuku j : list)
-            FileHandler.tulis(FILE, j.kodeJenis + "|" + j.namaJenis);
+            file.tulis(j.kodeJenis + "|" + j.namaJenis);
     }
 
     public static void tambah() {
+        FileHandler file = new FileHandler(FILE);
         System.out.print("Kode Jenis : ");
         String kode = sc.nextLine();
         for (JenisBuku j : lihat()) {
@@ -52,7 +57,7 @@ public class JenisBuku {
         }
         System.out.print("Nama Jenis : ");
         String nama = sc.nextLine();
-        FileHandler.tulis(FILE, kode + "|" + nama);
+        file.tulis(kode + "|" + nama);
         System.out.println("Jenis buku ditambahkan.");
     }
 
