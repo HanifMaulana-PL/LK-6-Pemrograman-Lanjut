@@ -1,5 +1,3 @@
-package LK6;
-
 public class Auth {
     private final String defaultUser = "default";
     private final String adminUser = "admin";
