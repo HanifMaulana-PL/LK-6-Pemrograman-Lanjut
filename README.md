@@ -27,3 +27,7 @@ Class ini digunakan untuk menampilkan laporan tentang data peminjaman buku, mena
 
 Class Main.java :
 Class main berfungsi untuk menjalankan seluruh class yang ada, memanggil dan mengirimkan data yang ada di seluruh sistem perpustakaan sesuai dengan fungsi dari tiap-tiap class yang ada.
+
+
+Alur Program : 
+Pilih Pegawai -> Login (Username, password) -> pilih topik -> fungsi (edit data)
