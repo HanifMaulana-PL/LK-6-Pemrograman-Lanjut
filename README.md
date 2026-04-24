@@ -1,5 +1,10 @@
 # LK-6-Pemrograman-Lanjut
-
+Anggota :
+1. Hamam Yusuf Abdulloh
+2. Abraham Samullson Siregar
+3. Ridho Alfarizi
+4. Muhammad Dzaky Nuril Mubin
+5. Hanif Maulana
 
 Class BUKU.java :
 Class ini untuk menyimpan data buku pada sistem perpustakaan, berfungsi untuk menyimpan atribut buku, sekaligus pengoperasian data untuk mengedit data buku, juga untuk mencari data buku yang disimpan dalam file.
